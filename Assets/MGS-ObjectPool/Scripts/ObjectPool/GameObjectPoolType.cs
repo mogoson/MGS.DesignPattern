@@ -1,8 +1,8 @@
-/*************************************************************************
- *  Copyright 2018 Mogoson All rights reserved.
+﻿/*************************************************************************
+ *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  GameObjectPoolType.cs
- *  Description  :  Define GameObjectPoolType.
+ *  Description  :  Define types of gameobject pool.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -12,6 +12,9 @@
 
 namespace Developer.ObjectPool
 {
+    /// <summary>
+    /// Type of gameobject pool.
+    /// </summary>
     public enum GameObjectPoolType
     {
         Undefine = 0,

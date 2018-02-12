@@ -1,8 +1,8 @@
-/*************************************************************************
- *  Copyright 2018 Mogoson All rights reserved.
+﻿/*************************************************************************
+ *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  GameObjectPoolManager.cs
- *  Description  :  Manager of GameObjectPool.
+ *  Description  :  Manager of gameobject pool.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using System;
 using System.Collections.Generic;
 using Developer.Singleton;
 using UnityEngine;
@@ -17,7 +18,7 @@ using UnityEngine;
 namespace Developer.ObjectPool
 {
     [AddComponentMenu("Developer/ObjectPool/GameObjectPoolManager")]
-    public class GameObjectPoolManager : PassiveSingleBehaviour<GameObjectPoolManager>
+    public class GameObjectPoolManager : SingleMonoBehaviour<GameObjectPoolManager>
     {
         #region Property and Field
         /// <summary>
@@ -58,11 +59,12 @@ namespace Developer.ObjectPool
         public virtual GameObjectPool GetPoolByType(GameObjectPoolType type)
         {
             if (poolDictionary.ContainsKey(type))
-            {
                 return poolDictionary[type];
-            }
             else
+            {
+                Debug.LogWarningFormat("Can not find the GameObjectPool in this manager : type is GameObjectPoolType.{0}.", type.ToString());
                 return null;
+            }
         }
         #endregion
     }

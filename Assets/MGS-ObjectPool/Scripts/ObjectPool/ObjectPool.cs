@@ -1,5 +1,5 @@
-/*************************************************************************
- *  Copyright 2018 Mogoson All rights reserved.
+﻿/*************************************************************************
+ *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ObjectPool.cs
  *  Description  :  Define ObjectPool.
@@ -18,7 +18,7 @@ namespace Developer.ObjectPool
     /// <summary>
     /// Generic object pool.
     /// </summary>
-    /// <typeparam name="T">Type of objects in pool.</typeparam>
+    /// <typeparam name="T">Specified type of object.</typeparam>
     public class ObjectPool<T>
     {
         #region Property and Field
