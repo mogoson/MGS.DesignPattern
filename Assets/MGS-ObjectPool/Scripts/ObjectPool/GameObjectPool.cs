@@ -14,14 +14,16 @@ using UnityEngine;
 
 namespace Developer.ObjectPool
 {
-    [AddComponentMenu("Developer/ObjectPool/GameObjectPool")]
-    public class GameObjectPool : MonoBehaviour
+    /// <summary>
+    /// Pool of gameobject.
+    /// </summary>
+    public class GameObjectPool
     {
         #region Property and Field
         /// <summary>
-        /// Type of pool.
+        /// Parent of gameobjects.
         /// </summary>
-        public GameObjectPoolType type;
+        public Transform root;
 
         /// <summary>
         /// Prefab to create clone.
@@ -29,13 +31,7 @@ namespace Developer.ObjectPool
         public GameObject prefab;
 
         /// <summary>
-        /// Max count limit of gameobjects.
-        /// </summary>
-        [SerializeField]
-        protected int maxCount = 100;
-
-        /// <summary>
-        /// Max count limit of gameobjects.
+        /// Max count limit of gameobjects in pool.
         /// </summary>
         public int MaxCount
         {
@@ -44,7 +40,7 @@ namespace Developer.ObjectPool
         }
 
         /// <summary>
-        /// Current count of gameobjects.
+        /// Current count of gameobjects in pool.
         /// </summary>
         public int CurrentCount { get { return pool.CurrentCount; } }
 
@@ -54,20 +50,15 @@ namespace Developer.ObjectPool
         protected ObjectPool<GameObject> pool;
         #endregion
 
-        #region Private Method
-        protected virtual void Awake()
-        {
-            pool = new ObjectPool<GameObject>(Create, Reset, Dispose, maxCount);
-        }
-
+        #region Protected Method
         /// <summary>
         /// Create new clone gameobject.
         /// </summary>
         /// <returns>Clone gameobject.</returns>
         protected virtual GameObject Create()
         {
-            var clone = Instantiate(prefab);
-            clone.transform.parent = transform;
+            var clone = Object.Instantiate(prefab);
+            clone.transform.parent = root;
             return clone;
         }
 
@@ -85,7 +76,7 @@ namespace Developer.ObjectPool
 
             obj.transform.parent = null;
             obj.transform.localScale = prefab.transform.localScale;
-            obj.transform.parent = transform;
+            obj.transform.parent = root;
         }
 
         /// <summary>
@@ -94,11 +85,33 @@ namespace Developer.ObjectPool
         /// <param name="obj">Gameobject to destroy.</param>
         protected virtual void Dispose(GameObject obj)
         {
-            Destroy(obj);
+            Object.Destroy(obj);
         }
         #endregion
 
         #region Public Method
+        /// <summary>
+        /// Create and initialize GameObjectPool.
+        /// </summary>
+        public GameObjectPool()
+        {
+            pool = new ObjectPool<GameObject>(Create, Reset, Dispose, 100);
+        }
+
+        /// <summary>
+        /// Create and initialize GameObjectPool.
+        /// </summary>
+        /// <param name="root">Parent of gameobjects.</param>
+        /// <param name="prefab">Prefab to create clone.</param>
+        /// <param name="maxCount">Max count limit of gameobjects in pool.</param>
+        public GameObjectPool(Transform root, GameObject prefab, int maxCount = 100)
+        {
+            this.root = root;
+            this.prefab = prefab;
+
+            pool = new ObjectPool<GameObject>(Create, Reset, Dispose, maxCount);
+        }
+
         /// <summary>
         /// Take a new gameobject from pool.
         /// </summary>
@@ -148,6 +161,9 @@ namespace Developer.ObjectPool
         /// <param name="obj">GameObject to recycle.</param>
         public virtual void Recycle(GameObject obj)
         {
+            if (obj == null)
+                return;
+
             obj.SetActive(false);
             pool.Recycle(obj);
         }

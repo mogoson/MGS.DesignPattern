@@ -23,12 +23,12 @@ namespace Developer.ObjectPool
     {
         #region Property and Field
         /// <summary>
-        /// Max count limit of objects.
+        /// Max count limit of objects in pool.
         /// </summary>
         public int MaxCount { set; get; }
 
         /// <summary>
-        /// Current count of objects.
+        /// Current count of objects in pool.
         /// </summary>
         public int CurrentCount { get { return objectStack.Count; } }
 
@@ -60,7 +60,7 @@ namespace Developer.ObjectPool
         /// <param name="create">Function of create new object.</param>
         /// <param name="reset">Action of reset object to default.</param>
         /// <param name="dispose">Action of dispose object.</param>
-        /// <param name="maxCount">Max count limit of objects.</param>
+        /// <param name="maxCount">Max count limit of objects in pool.</param>
         public ObjectPool(Func<T> create, Action<T> reset, Action<T> dispose, int maxCount = 100)
         {
             createFunc = create;
@@ -92,7 +92,12 @@ namespace Developer.ObjectPool
         /// <param name="obj">Object to recycle.</param>
         public virtual void Recycle(T obj)
         {
+            //Null object is not allowed to recycle.
             if (obj == null)
+                return;
+
+            //Avoid repeated recycle. 
+            if (objectStack.Contains(obj))
                 return;
 
             if (objectStack.Count < MaxCount)
