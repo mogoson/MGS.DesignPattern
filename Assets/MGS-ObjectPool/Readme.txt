@@ -1,7 +1,7 @@
 ==========================================================================
   Copyright © 2018 Mogoson. All rights reserved.
   Name: MGS-ObjectPool
-  Author: Mogoson   Version: 0.1.0   Date: 2/13/2018
+  Author: Mogoson   Version: 0.1.0   Date: 2/24/2018
 ==========================================================================
   [Summary]
     Unity object pool.
@@ -18,7 +18,7 @@
     GameObjectPool : Recycling objects that need to be repeatedly
     created and destroyed.
 
-    SingleMonoBehaviour : Provide an instance for global. 
+    SingleMonoBehaviour : Provide an instance for global.
 
     GameObjectPoolManager : Manage gameobject pool and provide an
     instance for global. 
@@ -28,13 +28,11 @@
 
     Create an empty gameobject and attach the GameObjectPoolManager to it.
 
-    Create empty gameobject as child of GameObjectPoolManager, attach the
-    GameObjectPool to it and set the parameters.
+	Add pool and config it's parameters in the Pools Settings of
+	GameObjectPoolManager.
 
     Use the API GameObjectPoolManager.Instance.GetPool(GameObjectPoolType type)
     to get target pool by type.
-
-    
 --------------------------------------------------------------------------
   [Demo]
     Demos in the path "MGS-ObjectPool/Scenes" provide reference to you.

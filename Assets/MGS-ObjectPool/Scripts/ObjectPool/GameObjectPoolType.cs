@@ -19,7 +19,7 @@ namespace Developer.ObjectPool
     {
         Undefine = 0,
 
-        //Example Types
+        //Example Type
         BulletPool = 1
     }
 }
