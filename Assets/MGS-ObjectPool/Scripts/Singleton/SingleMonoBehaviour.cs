@@ -18,9 +18,10 @@ namespace Developer.Singleton
     /// MonoBehaviour with a single instance.
     /// </summary>
     /// <typeparam name="T">Specified type.</typeparam>
+    [DisallowMultipleComponent]
     public abstract class SingleMonoBehaviour<T> : MonoBehaviour where T : SingleMonoBehaviour<T>
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
         /// Makes this gameobject not be destroyed automatically when loading a new scene.
         /// </summary>

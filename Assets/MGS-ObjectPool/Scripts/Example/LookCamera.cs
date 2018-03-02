@@ -17,7 +17,7 @@ namespace Developer.ObjectPool
     [AddComponentMenu("Developer/ObjectPool/LookCamera")]
     public class LookCamera : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property
         public float xSpeed = 120;
         public float ySpeed = 120;
 

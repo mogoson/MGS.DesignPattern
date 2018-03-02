@@ -19,19 +19,19 @@ namespace Developer.ObjectPool
     [RequireComponent(typeof(Rigidbody))]
     public class Bullet : MonoBehaviour
     {
-        #region Property and Field
-        public GameObjectPoolType poolType;
+        #region Field and Property
+        public string relatePool = "BulletPool";
         public float destroyDelay = 3;
 
         private new Rigidbody rigidbody;
-        private GameObjectPool dependentPool;
+        private GameObjectPool pool;
         #endregion
 
         #region Private Method
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody>();
-            dependentPool = GameObjectPoolManager.Instance.FindPool(poolType);
+            pool = GameObjectPoolManager.Instance.FindPool(relatePool);
         }
 
         private void OnEnable()
@@ -41,7 +41,7 @@ namespace Developer.ObjectPool
 
         private void OnCollisionEnter(Collision collision)
         {
-            dependentPool.Recycle(gameObject);
+            pool.Recycle(gameObject);
         }
 
         private void OnDisable()
@@ -53,7 +53,7 @@ namespace Developer.ObjectPool
         private IEnumerator DelayDestroy()
         {
             yield return new WaitForSeconds(destroyDelay);
-            dependentPool.Recycle(gameObject);
+            pool.Recycle(gameObject);
         }
         #endregion
 

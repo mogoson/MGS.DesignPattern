@@ -13,8 +13,6 @@
   [Achieve]
     ObjectPool : Generic object pool.
 
-    GameObjectPoolType : Define types of gameobject pool.
-
     GameObjectPool : Recycling objects that need to be repeatedly
     created and destroyed.
 
@@ -24,15 +22,13 @@
     instance for global. 
 --------------------------------------------------------------------------
   [Usage]
-    Modify the GameObjectPoolType to define your pool type.
-
     Create an empty gameobject and attach the GameObjectPoolManager to it.
 
 	Add pool and config it's parameters in the Pools Settings of
 	GameObjectPoolManager.
 
-    Use the API GameObjectPoolManager.Instance.GetPool(GameObjectPoolType type)
-    to get target pool by type.
+    Use the API GameObjectPoolManager.Instance.FindPool(string name)
+    to get target pool by name.
 --------------------------------------------------------------------------
   [Demo]
     Demos in the path "MGS-ObjectPool/Scenes" provide reference to you.

@@ -21,7 +21,7 @@ namespace Developer.ObjectPool
     /// <typeparam name="T">Specified type of object.</typeparam>
     public class ObjectPool<T>
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
         /// Max count limit of objects in pool.
         /// </summary>

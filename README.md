@@ -10,7 +10,6 @@
 
 ## Achieve
 - ObjectPool : Generic object pool.
-- GameObjectPoolType : Define types of gameobject pool.
 - GameObjectPool : Recycling objects that need to be repeatedly created and destroyed.
 - SingleMonoBehaviour : Provide an instance for global. 
 - GameObjectPoolManager : Manage gameobject pool and provide an instance for global.

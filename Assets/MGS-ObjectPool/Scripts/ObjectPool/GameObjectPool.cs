@@ -19,7 +19,7 @@ namespace Developer.ObjectPool
     /// </summary>
     public class GameObjectPool
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
         /// Parent of gameobjects.
         /// </summary>

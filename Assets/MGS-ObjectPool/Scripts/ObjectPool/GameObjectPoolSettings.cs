@@ -21,11 +21,11 @@ namespace Developer.ObjectPool
     [Serializable]
     public struct GameObjectPoolSettings
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
-        /// Type of pool.
+        /// Name of pool.
         /// </summary>
-        public GameObjectPoolType type;
+        public string name;
 
         /// <summary>
         /// Prefab to create clone.
@@ -39,9 +39,15 @@ namespace Developer.ObjectPool
         #endregion
 
         #region Public Method
-        public GameObjectPoolSettings(GameObjectPoolType type, GameObject prefab, int maxCount = 100)
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="name">Name of pool.</param>
+        /// <param name="prefab">Prefab to create clone.</param>
+        /// <param name="maxCount">Max count limit of gameobjects in pool.</param>
+        public GameObjectPoolSettings(string name, GameObject prefab, int maxCount = 100)
         {
-            this.type = type;
+            this.name = name;
             this.prefab = prefab;
             this.maxCount = maxCount;
         }

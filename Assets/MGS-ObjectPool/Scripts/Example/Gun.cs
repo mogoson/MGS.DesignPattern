@@ -17,26 +17,26 @@ namespace Developer.ObjectPool
     [AddComponentMenu("Developer/ObjectPool/Gun")]
     public class Gun : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property
         [SerializeField]
-        private GameObjectPoolType bulletPoolType;
+        private string bulletPool = "BulletPool";
         public Transform muzzle;
         public float fireForce = 100;
 
-        private GameObjectPool bulletPool;
+        private GameObjectPool pool;
         #endregion
 
         #region Private Method
         private void Start()
         {
-            bulletPool = GameObjectPoolManager.Instance.FindPool(bulletPoolType);
+            pool = GameObjectPoolManager.Instance.FindPool(bulletPool);
         }
 
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                var bulletObj = bulletPool.TakeNew(null, muzzle.position, muzzle.rotation);
+                var bulletObj = pool.TakeNew(null, muzzle.position, muzzle.rotation);
                 bulletObj.GetComponent<Bullet>().AddForce(muzzle.forward * fireForce);
             }
         }

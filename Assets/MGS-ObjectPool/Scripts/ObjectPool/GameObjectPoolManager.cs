@@ -19,17 +19,20 @@ namespace Developer.ObjectPool
     [AddComponentMenu("Developer/ObjectPool/GameObjectPoolManager")]
     public sealed class GameObjectPoolManager : SingleMonoBehaviour<GameObjectPoolManager>
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
         /// Settings of pools.
         /// </summary>
         [SerializeField]
-        private List<GameObjectPoolSettings> poolsSettings = new List<GameObjectPoolSettings>();
+        private List<GameObjectPoolSettings> poolsSettings = new List<GameObjectPoolSettings>()
+        {
+            new GameObjectPoolSettings("GameObjectPool", null)
+        };
 
         /// <summary>
-        /// Dictionary store pools info(type and pool).
+        /// Dictionary store pools info(name and pool).
         /// </summary>
-        private Dictionary<GameObjectPoolType, GameObjectPool> poolsInfo = new Dictionary<GameObjectPoolType, GameObjectPool>();
+        private Dictionary<string, GameObjectPool> poolsInfo = new Dictionary<string, GameObjectPool>();
         #endregion
 
         #region Protected Method
@@ -38,8 +41,8 @@ namespace Developer.ObjectPool
             foreach (var poolSettings in poolsSettings)
             {
 #if UNITY_EDITOR
-                if (poolsInfo.ContainsKey(poolSettings.type))
-                    Debug.LogErrorFormat("The type {0} of GameObjectPool configured in the Pools Settings is not unique in this manager.", poolSettings.type);
+                if (poolsInfo.ContainsKey(poolSettings.name))
+                    Debug.LogErrorFormat("The pool name {0} configured in the Pools Settings is not unique in this manager.", poolSettings.name);
                 else
 #endif
                     CreatePool(poolSettings);
@@ -51,16 +54,22 @@ namespace Developer.ObjectPool
         /// <summary>
         /// Create a pool in this manager.
         /// </summary>
-        /// <param name="type">Type of GameObjectPool.</param>
+        /// <param name="name">Name of GameObjectPool.</param>
         /// <param name="prefab">Prefab of GameObjectPool.</param>
         /// <param name="maxCount">Max count limit of gameobjects in pool.</param>
         /// <returns>Pool created base on parameters.</returns>
-        public GameObjectPool CreatePool(GameObjectPoolType type, GameObject prefab, int maxCount = 100)
+        public GameObjectPool CreatePool(string name, GameObject prefab, int maxCount = 100)
         {
-            if (poolsInfo.ContainsKey(type))
+            if (string.IsNullOrEmpty(name))
             {
-                Debug.LogWarningFormat("Create pool is failed : The pool that type is {0} already exist in this manager.", type);
-                return poolsInfo[type];
+                Debug.LogError("Create pool is failed : The pool name can not be null or empty.");
+                return null;
+            }
+
+            if (poolsInfo.ContainsKey(name))
+            {
+                Debug.LogWarningFormat("Create pool is cancelled : The pool that name is {0} already exist in this manager.", name);
+                return poolsInfo[name];
             }
 
             if (prefab == null)
@@ -70,17 +79,17 @@ namespace Developer.ObjectPool
             }
 
             //Create new root for pool.
-            var poolRoot = new GameObject(prefab.name + "Pool");
+            var poolRoot = new GameObject(name);
             poolRoot.transform.parent = transform;
 
             //Create new pool.
             var newPool = new GameObjectPool(poolRoot.transform, prefab, maxCount);
-            poolsInfo.Add(type, newPool);
+            poolsInfo.Add(name, newPool);
 
 #if UNITY_EDITOR
-            var newPoolSettings = new GameObjectPoolSettings(type, prefab, maxCount);
-            if (!poolsSettings.Contains(newPoolSettings))
-                poolsSettings.Add(newPoolSettings);
+            var settings = new GameObjectPoolSettings(name, prefab, maxCount);
+            if (!poolsSettings.Contains(settings))
+                poolsSettings.Add(settings);
 #endif
             return newPool;
         }
@@ -92,41 +101,41 @@ namespace Developer.ObjectPool
         /// <returns>Pool created base on settings.</returns>
         public GameObjectPool CreatePool(GameObjectPoolSettings poolSettings)
         {
-            return CreatePool(poolSettings.type, poolSettings.prefab, poolSettings.maxCount);
+            return CreatePool(poolSettings.name, poolSettings.prefab, poolSettings.maxCount);
         }
 
         /// <summary>
-        /// Find GameObjectPool by type.
+        /// Find GameObjectPool by name.
         /// </summary>
-        /// <param name="type">Type of GameObjectPool.</param>
-        /// <returns>Type match GameObjectPool.</returns>
-        public GameObjectPool FindPool(GameObjectPoolType type)
+        /// <param name="name">Name of GameObjectPool.</param>
+        /// <returns>Name match GameObjectPool.</returns>
+        public GameObjectPool FindPool(string name)
         {
-            if (poolsInfo.ContainsKey(type))
-                return poolsInfo[type];
+            if (poolsInfo.ContainsKey(name))
+                return poolsInfo[name];
             else
             {
-                Debug.LogWarningFormat("Find pool is failed : The pool that type is {0} does not exist in this manager.", type);
+                Debug.LogWarningFormat("Find pool is failed : The pool that name is {0} does not exist in this manager.", name);
                 return null;
             }
         }
 
         /// <summary>
-        /// Delete GameObjectPool by type.
+        /// Delete GameObjectPool by name.
         /// </summary>
-        /// <param name="type">Type of GameObjectPool.</param>
+        /// <param name="name">Name of GameObjectPool.</param>
         /// <returns>Delete succeed.</returns>
-        public bool DeletePool(GameObjectPoolType type)
+        public bool DeletePool(string name)
         {
-            if (poolsInfo.ContainsKey(type))
+            if (poolsInfo.ContainsKey(name))
             {
-                Destroy(poolsInfo[type].root.gameObject);
-                poolsInfo.Remove(type);
+                Destroy(poolsInfo[name].root.gameObject);
+                poolsInfo.Remove(name);
 
 #if UNITY_EDITOR
                 foreach (var poolSettings in poolsSettings)
                 {
-                    if (poolSettings.type == type)
+                    if (poolSettings.name == name)
                     {
                         poolsSettings.Remove(poolSettings);
                         break;
@@ -137,7 +146,7 @@ namespace Developer.ObjectPool
             }
             else
             {
-                Debug.LogWarningFormat("Delete pool is failed : The pool that type is {0} does not exist in this manager.", type);
+                Debug.LogWarningFormat("Delete pool is failed : The pool that name is {0} does not exist in this manager.", name);
                 return false;
             }
         }
