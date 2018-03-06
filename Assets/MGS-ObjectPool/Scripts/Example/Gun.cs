@@ -36,8 +36,7 @@ namespace Developer.ObjectPool
         {
             if (Input.GetMouseButtonDown(0))
             {
-                var bulletObj = pool.TakeNew(null, muzzle.position, muzzle.rotation);
-                bulletObj.GetComponent<Bullet>().AddForce(muzzle.forward * fireForce);
+                pool.TakeNew(null, muzzle.position, muzzle.rotation).GetComponent<Bullet>().AddForce(muzzle.forward * fireForce);
             }
         }
         #endregion

@@ -24,10 +24,7 @@ namespace Developer.ObjectPool
         /// Settings of pools.
         /// </summary>
         [SerializeField]
-        private List<GameObjectPoolSettings> poolsSettings = new List<GameObjectPoolSettings>()
-        {
-            new GameObjectPoolSettings("GameObjectPool", null)
-        };
+        private List<GameObjectPoolSettings> poolsSettings = new List<GameObjectPoolSettings>();
 
         /// <summary>
         /// Dictionary store pools info(name and pool).
@@ -125,7 +122,7 @@ namespace Developer.ObjectPool
         /// </summary>
         /// <param name="name">Name of GameObjectPool.</param>
         /// <returns>Delete succeed.</returns>
-        public bool DeletePool(string name)
+        public void DeletePool(string name)
         {
             if (poolsInfo.ContainsKey(name))
             {
@@ -142,13 +139,9 @@ namespace Developer.ObjectPool
                     }
                 }
 #endif
-                return true;
             }
             else
-            {
                 Debug.LogWarningFormat("Delete pool is failed : The pool that name is {0} does not exist in this manager.", name);
-                return false;
-            }
         }
         #endregion
     }

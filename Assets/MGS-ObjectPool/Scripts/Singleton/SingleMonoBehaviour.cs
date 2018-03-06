@@ -35,20 +35,15 @@ namespace Developer.Singleton
         {
             get
             {
-                if (instance)
-                    return instance;
-                else
+                if (instance == null)
                 {
                     //Active MonoBehaviour in scene.
-                    var active = FindObjectOfType<T>();
-                    if (active)
-                        instance = active;
-                    else
+                    instance = FindObjectOfType<T>();
+                    if (instance == null)
                     {
                         //Create agent to attach MonoBehaviour.
-                        var agent = new GameObject(typeof(T).Name);
-                        instance = agent.AddComponent<T>();
-                        DontDestroyOnLoad(agent);
+                        instance = new GameObject(typeof(T).Name).AddComponent<T>();
+                        DontDestroyOnLoad(instance.gameObject);
                     }
                 }
                 return instance;
@@ -71,12 +66,15 @@ namespace Developer.Singleton
                 if (dontDestroyOnLoad)
                     DontDestroyOnLoad(gameObject);
             }
-            else if (instance != this)
+            else
             {
-                Destroy(this);
-                Debug.LogWarningFormat("Destroy the redundant instance of {0} component form {1} : " +
-                    "Multi instances of {0} component in a scene is violat singleton design.", typeof(T).Name, name);
-                return;
+                if (instance != this)
+                {
+                    Destroy(this);
+                    Debug.LogWarningFormat("Destroy the redundant instance of {0} component form {1} : " +
+                        "Multi instances of {0} component in a scene is violat singleton design.", typeof(T).Name, name);
+                    return;
+                }
             }
 
             SingleAwake();

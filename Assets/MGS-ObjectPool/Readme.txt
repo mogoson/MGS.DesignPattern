@@ -1,4 +1,4 @@
-==========================================================================
+﻿==========================================================================
   Copyright © 2018 Mogoson. All rights reserved.
   Name: MGS-ObjectPool
   Author: Mogoson   Version: 0.1.0   Date: 2/24/2018
@@ -24,8 +24,8 @@
   [Usage]
     Create an empty gameobject and attach the GameObjectPoolManager to it.
 
-	Add pool and config it's parameters in the Pools Settings of
-	GameObjectPoolManager.
+    Add pool and config it's parameters in the Pools Settings of
+    GameObjectPoolManager.
 
     Use the API GameObjectPoolManager.Instance.FindPool(string name)
     to get target pool by name.

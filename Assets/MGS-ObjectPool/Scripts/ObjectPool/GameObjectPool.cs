@@ -95,7 +95,7 @@ namespace Developer.ObjectPool
         /// </summary>
         public GameObjectPool()
         {
-            pool = new ObjectPool<GameObject>(Create, Reset, Dispose, 100);
+            pool = new ObjectPool<GameObject>(Create, Reset, Dispose);
         }
 
         /// <summary>
@@ -161,9 +161,6 @@ namespace Developer.ObjectPool
         /// <param name="obj">GameObject to recycle.</param>
         public virtual void Recycle(GameObject obj)
         {
-            if (obj == null)
-                return;
-
             obj.SetActive(false);
             pool.Recycle(obj);
         }
