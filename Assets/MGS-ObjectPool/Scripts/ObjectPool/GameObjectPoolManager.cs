@@ -121,7 +121,6 @@ namespace Developer.ObjectPool
         /// Delete GameObjectPool by name.
         /// </summary>
         /// <param name="name">Name of GameObjectPool.</param>
-        /// <returns>Delete succeed.</returns>
         public void DeletePool(string name)
         {
             if (poolsInfo.ContainsKey(name))
