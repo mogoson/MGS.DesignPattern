@@ -2,7 +2,7 @@
  *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  LookCamera.cs
- *  Description  :  Simple look camera.
+ *  Description  :  Simple look camera for demo.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -12,9 +12,8 @@
 
 using UnityEngine;
 
-namespace Developer.ObjectPool
+namespace Mogoson.ObjectPool
 {
-    [AddComponentMenu("Developer/ObjectPool/LookCamera")]
     public class LookCamera : MonoBehaviour
     {
         #region Field and Property

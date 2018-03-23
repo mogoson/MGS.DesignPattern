@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace Developer.ObjectPool
+namespace Mogoson.ObjectPool
 {
     /// <summary>
     /// Pool of gameobject.
@@ -108,7 +108,6 @@ namespace Developer.ObjectPool
         {
             this.root = root;
             this.prefab = prefab;
-
             pool = new ObjectPool<GameObject>(Create, Reset, Dispose, maxCount);
         }
 

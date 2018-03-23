@@ -13,9 +13,8 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Developer.ObjectPool
+namespace Mogoson.ObjectPool
 {
-    [AddComponentMenu("Developer/ObjectPool/Bullet")]
     [RequireComponent(typeof(Rigidbody))]
     public class Bullet : MonoBehaviour
     {

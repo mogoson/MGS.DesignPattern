@@ -10,13 +10,16 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using Mogoson.Singleton;
 using System.Collections.Generic;
-using Developer.Singleton;
 using UnityEngine;
 
-namespace Developer.ObjectPool
+namespace Mogoson.ObjectPool
 {
-    [AddComponentMenu("Developer/ObjectPool/GameObjectPoolManager")]
+    /// <summary>
+    /// Manager of gameobject pool.
+    /// </summary>
+    [AddComponentMenu("Mogoson/ObjectPool/GameObjectPoolManager")]
     public sealed class GameObjectPoolManager : SingleMonoBehaviour<GameObjectPoolManager>
     {
         #region Field and Property

@@ -13,7 +13,7 @@
 using System;
 using UnityEngine;
 
-namespace Developer.ObjectPool
+namespace Mogoson.ObjectPool
 {
     /// <summary>
     /// Settings of GameObjectPool.
