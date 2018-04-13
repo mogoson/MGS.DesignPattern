@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using Mogoson.Singleton;
+using Mogoson.DesignPattern;
 using System.Collections.Generic;
 using UnityEngine;
 

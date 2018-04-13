@@ -13,7 +13,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Mogoson.ObjectPool
+namespace Mogoson.DesignPattern
 {
     /// <summary>
     /// Generic object pool.

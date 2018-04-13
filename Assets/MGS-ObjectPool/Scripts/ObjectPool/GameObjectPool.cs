@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using Mogoson.DesignPattern;
 using UnityEngine;
 
 namespace Mogoson.ObjectPool
