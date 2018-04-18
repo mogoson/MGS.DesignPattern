@@ -115,7 +115,7 @@ namespace Mogoson.DesignPattern
         }
 
         /// <summary>
-        /// Clear all objects.  
+        /// Clear all objects.
         /// </summary>
         public virtual void Clear()
         {
