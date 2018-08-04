@@ -14,6 +14,7 @@ using UnityEngine;
 
 namespace Mogoson.ObjectPool
 {
+    [AddComponentMenu("Mogoson/ObjectPool/Gun")]
     public class Gun : MonoBehaviour
     {
         #region Field and Property

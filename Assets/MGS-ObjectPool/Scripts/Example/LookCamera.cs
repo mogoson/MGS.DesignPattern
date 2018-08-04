@@ -14,6 +14,7 @@ using UnityEngine;
 
 namespace Mogoson.ObjectPool
 {
+    [AddComponentMenu("Mogoson/ObjectPool/LookCamera")]
     public class LookCamera : MonoBehaviour
     {
         #region Field and Property

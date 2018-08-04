@@ -15,6 +15,7 @@ using UnityEngine;
 
 namespace Mogoson.ObjectPool
 {
+    [AddComponentMenu("Mogoson/ObjectPool/Bullet")]
     [RequireComponent(typeof(Rigidbody))]
     public class Bullet : MonoBehaviour
     {
