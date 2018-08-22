@@ -1,4 +1,4 @@
-# MGS-ObjectPool
+﻿# MGS-ObjectPool
 - [English Manual](./README.md)
 
 ## 概述
@@ -20,7 +20,7 @@
 ## 预览
 - Bullet Pool
 
-![BulletPool](./Attachments/README_Image/BulletPool.gif)
+![Bullet Pool](./Attachments/README_Image/BulletPool.gif)
 
 ## 联系
-- 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。
+- 如果你有任何问题或者建议，欢迎通过mogoson@outlook.com联系我。

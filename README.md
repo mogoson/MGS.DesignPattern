@@ -1,4 +1,4 @@
-# MGS-ObjectPool
+﻿# MGS-ObjectPool
 - [中文手册](./README_ZH.md)
 
 ## Summary
@@ -20,7 +20,7 @@
 ## Preview
 - Bullet Pool
 
-![BulletPool](./Attachments/README_Image/BulletPool.gif)
+![Bullet Pool](./Attachments/README_Image/BulletPool.gif)
 
 ## Contact
-- If you have any questions, feel free to contact me at mogoson@qq.com.
+- If you have any questions, feel free to contact me at mogoson@outlook.com.
