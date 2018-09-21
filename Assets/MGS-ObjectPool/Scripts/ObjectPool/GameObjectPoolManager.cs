@@ -11,6 +11,7 @@
  *************************************************************************/
 
 using Mogoson.DesignPattern;
+using Mogoson.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,7 +43,7 @@ namespace Mogoson.ObjectPool
             {
 #if UNITY_EDITOR
                 if (poolsInfo.ContainsKey(poolSettings.name))
-                    Debug.LogErrorFormat("The pool name {0} configured in the Pools Settings is not unique in this manager.", poolSettings.name);
+                    Logger.LogError("The pool name {0} configured in the Pools Settings is not unique in this manager.", poolSettings.name);
                 else
 #endif
                     CreatePool(poolSettings);
@@ -62,19 +63,19 @@ namespace Mogoson.ObjectPool
         {
             if (string.IsNullOrEmpty(name))
             {
-                Debug.LogError("Create pool is failed : The pool name can not be null or empty.");
+                Logger.LogError("Create pool is failed : The pool name can not be null or empty.");
                 return null;
             }
 
             if (poolsInfo.ContainsKey(name))
             {
-                Debug.LogWarningFormat("Create pool is cancelled : The pool that name is {0} already exist in this manager.", name);
+                Logger.LogWarning("Create pool is cancelled : The pool that name is {0} already exist in this manager.", name);
                 return poolsInfo[name];
             }
 
             if (prefab == null)
             {
-                Debug.LogError("Create pool is failed : The prefab of pool can not be null.");
+                Logger.LogError("Create pool is failed : The prefab of pool can not be null.");
                 return null;
             }
 
@@ -115,7 +116,7 @@ namespace Mogoson.ObjectPool
                 return poolsInfo[name];
             else
             {
-                Debug.LogWarningFormat("Find pool is failed : The pool that name is {0} does not exist in this manager.", name);
+                Logger.LogWarning("Find pool is failed : The pool that name is {0} does not exist in this manager.", name);
                 return null;
             }
         }
@@ -143,7 +144,7 @@ namespace Mogoson.ObjectPool
 #endif
             }
             else
-                Debug.LogWarningFormat("Delete pool is failed : The pool that name is {0} does not exist in this manager.", name);
+                Logger.LogWarning("Delete pool is failed : The pool that name is {0} does not exist in this manager.", name);
         }
         #endregion
     }
