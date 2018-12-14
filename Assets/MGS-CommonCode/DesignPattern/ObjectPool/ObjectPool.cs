@@ -76,14 +76,14 @@ namespace Mogoson.DesignPattern
         public virtual T TakeNew()
         {
             if (objectStack.Count > 0)
-                return objectStack.Pop();
-            else
             {
-                if (createFunc == null)
-                    return default(T);
-                else
-                    return createFunc.Invoke();
+                return objectStack.Pop();
             }
+            if (createFunc == null)
+            {
+                return default(T);
+            }
+            return createFunc.Invoke();
         }
 
         /// <summary>
@@ -94,23 +94,30 @@ namespace Mogoson.DesignPattern
         {
             //Null object is not allowed to recycle.
             if (obj == null)
+            {
                 return;
+            }
 
             //Avoid repeated recycle. 
             if (objectStack.Contains(obj))
+            {
                 return;
+            }
 
             if (objectStack.Count < MaxCount)
             {
                 if (resetAction != null)
+                {
                     resetAction.Invoke(obj);
-
+                }
                 objectStack.Push(obj);
             }
             else
             {
                 if (disposeAction != null)
+                {
                     disposeAction.Invoke(obj);
+                }
             }
         }
 

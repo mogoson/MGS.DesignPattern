@@ -43,10 +43,12 @@ namespace Mogoson.ObjectPool
             {
 #if UNITY_EDITOR
                 if (poolsInfo.ContainsKey(poolSettings.name))
+                {
                     LogUtility.LogError("The pool name {0} configured in the Pools Settings is not unique in this manager.", poolSettings.name);
-                else
+                    continue;
+                }
 #endif
-                    CreatePool(poolSettings);
+                CreatePool(poolSettings);
             }
         }
         #endregion
@@ -63,19 +65,19 @@ namespace Mogoson.ObjectPool
         {
             if (string.IsNullOrEmpty(name))
             {
-                LogUtility.LogError("Create pool is failed: The pool name can not be null or empty.");
+                LogUtility.LogError("Create pool is failed : The pool name can not be null or empty.");
                 return null;
             }
 
             if (poolsInfo.ContainsKey(name))
             {
-                LogUtility.LogWarning("Create pool is cancelled: The pool that name is {0} already exist in this manager.", name);
+                LogUtility.LogWarning("Create pool is cancelled : The pool that name is {0} already exist in this manager.", name);
                 return poolsInfo[name];
             }
 
             if (prefab == null)
             {
-                LogUtility.LogError("Create pool is failed: The prefab of pool can not be null.");
+                LogUtility.LogError("Create pool is failed : The prefab of pool can not be null.");
                 return null;
             }
 
@@ -90,7 +92,9 @@ namespace Mogoson.ObjectPool
 #if UNITY_EDITOR
             var settings = new GameObjectPoolSettings(name, prefab, maxCount);
             if (!poolsSettings.Contains(settings))
+            {
                 poolsSettings.Add(settings);
+            }
 #endif
             return newPool;
         }
@@ -113,10 +117,12 @@ namespace Mogoson.ObjectPool
         public GameObjectPool FindPool(string name)
         {
             if (poolsInfo.ContainsKey(name))
+            {
                 return poolsInfo[name];
+            }
             else
             {
-                LogUtility.LogWarning("Find pool is failed: The pool that name is {0} does not exist in this manager.", name);
+                LogUtility.LogWarning("Find pool is failed : The pool that name is {0} does not exist in this manager.", name);
                 return null;
             }
         }
@@ -144,7 +150,9 @@ namespace Mogoson.ObjectPool
 #endif
             }
             else
-                LogUtility.LogWarning("Delete pool is failed: The pool that name is {0} does not exist in this manager.", name);
+            {
+                LogUtility.LogWarning("Delete pool is failed : The pool that name is {0} does not exist in this manager.", name);
+            }
         }
         #endregion
     }
