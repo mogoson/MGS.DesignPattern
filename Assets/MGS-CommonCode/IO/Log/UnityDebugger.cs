@@ -1,48 +1,41 @@
-﻿/*************************************************************************
+/*************************************************************************
  *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  Logger.cs
- *  Description  :  Logger of system.
+ *  File         :  UnityDebugger.cs
+ *  Description  :  Debugger for unity editor.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  9/5/2015
+ *  Date         :  9/19/2018
  *  Description  :  Initial development version.
  *************************************************************************/
+
+using Mogoson.DesignPattern;
+using UnityEngine;
 
 namespace Mogoson.IO
 {
     /// <summary>
-    /// Logger of system.
+    /// Debugger for unity editor.
     /// </summary>
-    public static class Logger
+    public sealed class UnityDebugger : Singleton<UnityDebugger>, ILogger
     {
-        #region Field and Property
+        #region Private Method
         /// <summary>
-        /// Inner logger.
+        /// Constructor.
         /// </summary>
-        private static ILogger innerLogger;
+        private UnityDebugger() { }
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Set the inner logger.
-        /// </summary>
-        /// <param name="logger">Inner logger.</param>
-        public static void Set(ILogger logger)
-        {
-            innerLogger = logger;
-        }
-
         /// <summary>
         /// Logs a formatted message.
         /// </summary>
         /// <param name="format">A composite format string.</param>
         /// <param name="args">Format arguments.</param>
-        public static void Log(string format, params object[] args)
+        public void Log(string format, params object[] args)
         {
-            if (innerLogger != null)
-                innerLogger.Log(format, args);
+            Debug.LogFormat(format, args);
         }
 
         /// <summary>
@@ -50,10 +43,9 @@ namespace Mogoson.IO
         /// </summary>
         /// <param name="format">A composite format string.</param>
         /// <param name="args">Format arguments.</param>
-        public static void LogError(string format, params object[] args)
+        public void LogError(string format, params object[] args)
         {
-            if (innerLogger != null)
-                innerLogger.LogError(format, args);
+            Debug.LogErrorFormat(format, args);
         }
 
         /// <summary>
@@ -61,10 +53,9 @@ namespace Mogoson.IO
         /// </summary>
         /// <param name="format">A composite format string.</param>
         /// <param name="args">Format arguments.</param>
-        public static void LogWarning(string format, params object[] args)
+        public void LogWarning(string format, params object[] args)
         {
-            if (innerLogger != null)
-                innerLogger.LogWarning(format, args);
+            Debug.LogWarningFormat(format, args);
         }
         #endregion
     }

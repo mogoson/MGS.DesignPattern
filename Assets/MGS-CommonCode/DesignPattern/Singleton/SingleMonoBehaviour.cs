@@ -63,16 +63,17 @@ namespace Mogoson.DesignPattern
             if (instance == null)
             {
                 instance = this as T;
-
                 if (dontDestroyOnLoad)
+                {
                     DontDestroyOnLoad(gameObject);
+                }
             }
             else
             {
                 if (instance != this)
                 {
                     Destroy(this);
-                    Logger.LogWarning("Destroy the redundant instance of {0} component form {1} : " +
+                    LogUtility.LogWarning("Destroy the redundant instance of {0} component form {1}: " +
                         "Multi instances of {0} component in a scene is violat singleton design.", typeof(T).Name, name);
                     return;
                 }
