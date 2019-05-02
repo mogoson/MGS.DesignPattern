@@ -1,22 +1,18 @@
 ﻿==========================================================================
-  Copyright © 2018 Mogoson. All rights reserved.
+  Copyright © 2018-2019 Mogoson. All rights reserved.
   Name: MGS-ObjectPool
-  Author: Mogoson   Version: 0.1.0   Date: 2/24/2018
+  Author: Mogoson   Version: 1.0.0   Date: 5/2/2019
 ==========================================================================
   [Summary]
     Unity object pool.
 --------------------------------------------------------------------------
   [Environment]
     Unity 5.0 or above.
-    .Net Framework 3.0 or above.
+    .Net Framework 3.5 or above.
 --------------------------------------------------------------------------
   [Achieve]
-    ObjectPool : Generic object pool.
-
     GameObjectPool : Recycling objects that need to be repeatedly
     created and destroyed.
-
-    SingleMonoBehaviour : Provide an instance for global.
 
     GameObjectPoolManager : Manage gameobject pool and provide an
     instance for global. 

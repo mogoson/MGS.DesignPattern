@@ -6,13 +6,7 @@
 
 ## Environment
 - Unity 5.0 or above.
-- .Net Framework 3.0 or above.
-
-## Achieve
-- ObjectPool : Generic object pool.
-- GameObjectPool : Recycling objects that need to be repeatedly created and destroyed.
-- SingleMonoBehaviour : Provide an instance for global. 
-- GameObjectPoolManager : Manage gameobject pool and provide an instance for global.
+- .Net Framework 3.5 or above.
 
 ## Demo
 - Demos in the path "MGS-ObjectPool/Scenes" provide reference to you.
