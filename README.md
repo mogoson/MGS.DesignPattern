@@ -20,7 +20,7 @@
 ## Preview
 - Bullet Pool
 
-![Bullet Pool](./Attachments/README_Image/BulletPool.gif)
+![Bullet Pool](./Attachment/README_Image/BulletPool.gif)
 
 ## Contact
 - If you have any questions, feel free to contact me at mogoson@outlook.com.

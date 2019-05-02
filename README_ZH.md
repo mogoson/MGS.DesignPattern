@@ -20,7 +20,7 @@
 ## 预览
 - Bullet Pool
 
-![Bullet Pool](./Attachments/README_Image/BulletPool.gif)
+![Bullet Pool](./Attachment/README_Image/BulletPool.gif)
 
 ## 联系
 - 如果你有任何问题或者建议，欢迎通过mogoson@outlook.com联系我。
