@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MGS.ObjectPool</name>
+    </assembly>
+    <members>
+        <member name="T:MGS.ObjectPool.GameObjectPool">
+            <summary>
+            Pool of gameobject.
+            </summary>
+        </member>
+        <member name="F:MGS.ObjectPool.GameObjectPool.root">
+            <summary>
+            Parent of gameobjects.
+            </summary>
+        </member>
+        <member name="F:MGS.ObjectPool.GameObjectPool.prefab">
+            <summary>
+            Prefab to create clone.
+            </summary>
+        </member>
+        <member name="P:MGS.ObjectPool.GameObjectPool.MaxCount">
+            <summary>
+            Max count limit of gameobjects in pool.
+            </summary>
+        </member>
+        <member name="P:MGS.ObjectPool.GameObjectPool.CurrentCount">
+            <summary>
+            Current count of gameobjects in pool.
+            </summary>
+        </member>
+        <member name="F:MGS.ObjectPool.GameObjectPool.pool">
+            <summary>
+            Pool of gameobjects.
+            </summary>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPool.Create">
+            <summary>
+            Create new clone gameobject.
+            </summary>
+            <returns>Clone gameobject.</returns>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPool.Reset(UnityEngine.GameObject)">
+            <summary>
+            Reset gameobject to recycle state.
+            </summary>
+            <param name="obj">GameObject to reset.</param>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPool.Dispose(UnityEngine.GameObject)">
+            <summary>
+            Destroy gameobject.
+            </summary>
+            <param name="obj">Gameobject to destroy.</param>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPool.#ctor">
+            <summary>
+            Create and initialize GameObjectPool.
+            </summary>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPool.#ctor(UnityEngine.Transform,UnityEngine.GameObject,System.Int32)">
+            <summary>
+            Create and initialize GameObjectPool.
+            </summary>
+            <param name="root">Parent of gameobjects.</param>
+            <param name="prefab">Prefab to create clone.</param>
+            <param name="maxCount">Max count limit of gameobjects in pool.</param>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPool.TakeNew">
+            <summary>
+            Take a new gameobject from pool.
+            </summary>
+            <returns>New gameobject.</returns>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPool.TakeNew(UnityEngine.Vector3,UnityEngine.Quaternion)">
+            <summary>
+            Take a new gameobject from pool.
+            </summary>
+            <param name="position">Position of new gameobject.</param>
+            <param name="rotation">Rotation of new gameobject.</param>
+            <returns>New gameobject.</returns>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPool.TakeNew(UnityEngine.Transform,UnityEngine.Vector3,UnityEngine.Quaternion)">
+            <summary>
+            Take a new gameobject from pool.
+            </summary>
+            <param name="parent">Parent of new gameobject.</param>
+            <param name="localPosition">Local position of new gameobject.</param>
+            <param name="localRotation">Local rotation of new gameobject.</param>
+            <returns>New gameobject.</returns>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPool.Recycle(UnityEngine.GameObject)">
+            <summary>
+            Recycle gameobject to pool.
+            </summary>
+            <param name="obj">GameObject to recycle.</param>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPool.Clear">
+            <summary>
+            Clear the gameobjects.
+            </summary>
+        </member>
+        <member name="T:MGS.ObjectPool.GameObjectPoolManager">
+            <summary>
+            Manager of gameobject pool.
+            </summary>
+        </member>
+        <member name="F:MGS.ObjectPool.GameObjectPoolManager.poolsSettings">
+            <summary>
+            Settings of pools.
+            </summary>
+        </member>
+        <member name="F:MGS.ObjectPool.GameObjectPoolManager.poolsInfo">
+            <summary>
+            Dictionary store pools info(name and pool).
+            </summary>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPoolManager.SingleAwake">
+            <summary>
+            GameObjectPoolManager awake.
+            </summary>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPoolManager.CreatePool(System.String,UnityEngine.GameObject,System.Int32)">
+            <summary>
+            Create a pool in this manager.
+            </summary>
+            <param name="name">Name of GameObjectPool.</param>
+            <param name="prefab">Prefab of GameObjectPool.</param>
+            <param name="maxCount">Max count limit of gameobjects in pool.</param>
+            <returns>Pool created base on parameters.</returns>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPoolManager.CreatePool(MGS.ObjectPool.GameObjectPoolSettings)">
+            <summary>
+            Create a pool in this manager.
+            </summary>
+            <param name="poolSettings">Settings of pool.</param>
+            <returns>Pool created base on settings.</returns>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPoolManager.FindPool(System.String)">
+            <summary>
+            Find GameObjectPool by name.
+            </summary>
+            <param name="name">Name of GameObjectPool.</param>
+            <returns>Name match GameObjectPool.</returns>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPoolManager.DeletePool(System.String)">
+            <summary>
+            Delete GameObjectPool by name.
+            </summary>
+            <param name="name">Name of GameObjectPool.</param>
+        </member>
+        <member name="T:MGS.ObjectPool.GameObjectPoolSettings">
+            <summary>
+            Settings of GameObjectPool.
+            </summary>
+        </member>
+        <member name="F:MGS.ObjectPool.GameObjectPoolSettings.name">
+            <summary>
+            Name of pool.
+            </summary>
+        </member>
+        <member name="F:MGS.ObjectPool.GameObjectPoolSettings.prefab">
+            <summary>
+            Prefab to create clone.
+            </summary>
+        </member>
+        <member name="F:MGS.ObjectPool.GameObjectPoolSettings.maxCount">
+            <summary>
+            Max count limit of gameobjects in pool.
+            </summary>
+        </member>
+        <member name="M:MGS.ObjectPool.GameObjectPoolSettings.#ctor(System.String,UnityEngine.GameObject,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="name">Name of pool.</param>
+            <param name="prefab">Prefab to create clone.</param>
+            <param name="maxCount">Max count limit of gameobjects in pool.</param>
+        </member>
+    </members>
+</doc>
