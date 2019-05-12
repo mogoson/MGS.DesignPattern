@@ -8,6 +8,11 @@
 - Unity 5.0 or above.
 - .Net Framework 3.5 or above.
 
+## Achieve
+- Generic object pool.
+- Recycling objects that need to be repeatedly created and destroyed.
+- Manage gameobject pool.
+
 ## Demo
 - Demos in the path "MGS-ObjectPool/Scenes" provide reference to you.
 
