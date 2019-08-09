@@ -1,7 +1,7 @@
 ﻿==========================================================================
   Copyright © 2018-2019 Mogoson. All rights reserved.
   Name: MGS-ObjectPool
-  Author: Mogoson   Version: 1.0.0   Date: 5/2/2019
+  Author: Mogoson   Version: 1.0.0   Date: 8/10/2019
 ==========================================================================
   [Summary]
     Unity object pool.
