@@ -104,19 +104,9 @@
             Manager of gameobject pool.
             </summary>
         </member>
-        <member name="F:MGS.ObjectPool.GameObjectPoolManager.poolsSettings">
-            <summary>
-            Settings of pools.
-            </summary>
-        </member>
         <member name="F:MGS.ObjectPool.GameObjectPoolManager.poolsInfo">
             <summary>
             Dictionary store pools info(name and pool).
-            </summary>
-        </member>
-        <member name="M:MGS.ObjectPool.GameObjectPoolManager.SingleAwake">
-            <summary>
-            GameObjectPoolManager awake.
             </summary>
         </member>
         <member name="M:MGS.ObjectPool.GameObjectPoolManager.CreatePool(System.String,UnityEngine.GameObject,System.Int32)">
@@ -127,13 +117,6 @@
             <param name="prefab">Prefab of GameObjectPool.</param>
             <param name="maxCount">Max count limit of gameobjects in pool.</param>
             <returns>Pool created base on parameters.</returns>
-        </member>
-        <member name="M:MGS.ObjectPool.GameObjectPoolManager.CreatePool(MGS.ObjectPool.GameObjectPoolSettings)">
-            <summary>
-            Create a pool in this manager.
-            </summary>
-            <param name="poolSettings">Settings of pool.</param>
-            <returns>Pool created base on settings.</returns>
         </member>
         <member name="M:MGS.ObjectPool.GameObjectPoolManager.FindPool(System.String)">
             <summary>
@@ -147,34 +130,6 @@
             Delete GameObjectPool by name.
             </summary>
             <param name="name">Name of GameObjectPool.</param>
-        </member>
-        <member name="T:MGS.ObjectPool.GameObjectPoolSettings">
-            <summary>
-            Settings of GameObjectPool.
-            </summary>
-        </member>
-        <member name="F:MGS.ObjectPool.GameObjectPoolSettings.name">
-            <summary>
-            Name of pool.
-            </summary>
-        </member>
-        <member name="F:MGS.ObjectPool.GameObjectPoolSettings.prefab">
-            <summary>
-            Prefab to create clone.
-            </summary>
-        </member>
-        <member name="F:MGS.ObjectPool.GameObjectPoolSettings.maxCount">
-            <summary>
-            Max count limit of gameobjects in pool.
-            </summary>
-        </member>
-        <member name="M:MGS.ObjectPool.GameObjectPoolSettings.#ctor(System.String,UnityEngine.GameObject,System.Int32)">
-            <summary>
-            Constructor.
-            </summary>
-            <param name="name">Name of pool.</param>
-            <param name="prefab">Prefab to create clone.</param>
-            <param name="maxCount">Max count limit of gameobjects in pool.</param>
         </member>
     </members>
 </doc>

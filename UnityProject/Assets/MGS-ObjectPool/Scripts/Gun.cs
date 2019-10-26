@@ -18,25 +18,26 @@ namespace MGS.ObjectPool
     public class Gun : MonoBehaviour
     {
         #region Field and Property
-        [SerializeField]
-        private string bulletPool = "BulletPool";
         public Transform muzzle;
+        public GameObject bulletPrefab;
         public float fireForce = 100;
 
+        public const string BULLET_POOL = "BulletPool";
         private GameObjectPool pool;
         #endregion
 
         #region Private Method
         private void Start()
         {
-            pool = GameObjectPoolManager.Instance.FindPool(bulletPool);
+            pool = GameObjectPoolManager.Instance.CreatePool(BULLET_POOL, bulletPrefab);
         }
 
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                pool.TakeNew(null, muzzle.position, muzzle.rotation).GetComponent<Bullet>().AddForce(muzzle.forward * fireForce);
+                var bullet = pool.TakeNew(muzzle.position, muzzle.rotation).GetComponent<Bullet>();
+                bullet.AddForce(muzzle.forward * fireForce);
             }
         }
         #endregion

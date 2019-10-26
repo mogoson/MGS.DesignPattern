@@ -20,7 +20,6 @@ namespace MGS.ObjectPool
     public class Bullet : MonoBehaviour
     {
         #region Field and Property
-        public string relatePool = "BulletPool";
         public float destroyDelay = 3;
 
         private new Rigidbody rigidbody;
@@ -31,7 +30,7 @@ namespace MGS.ObjectPool
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody>();
-            pool = GameObjectPoolManager.Instance.FindPool(relatePool);
+            pool = GameObjectPoolManager.Instance.FindPool(Gun.BULLET_POOL);
         }
 
         private void OnEnable()
