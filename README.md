@@ -1,24 +1,57 @@
-﻿# MGS-ObjectPool
+# MGS.ObjectPool
 
 ## Summary
-- Unity object pool.
+- Game object pool for Unity project develop.
 
 ## Environment
 - Unity 5.0 or above.
 - .Net Framework 3.5 or above.
 
-## Achieve
-- Generic object pool.
-- Recycling objects that need to be repeatedly created and destroyed.
-- Manage gameobject pool.
+## Platform
+- Windows.
+
+## Demand
+- Create pool for reusable game object.
+- Create, Find and Delete pool by manager.
+
+## Implemented
+- GOPool: Pool of gameobject.
+- GOPoolManager: Manager of gameobject pool.
+
+## Usage
+
+1. Create game object pool.
+
+   ```c#
+   //The prefab as template of reusable game object.
+   var pool = GOPoolManager.Instance.CreatePool(poolName, prefab);
+   ```
+
+1. Use pool to Take, Recycle game object.
+
+   ```C#
+   //Use pool name to find the instance of pool from manager if we do not hold it.
+   var pool = GOPoolManager.Instance.FindPool(poolName);
+   
+   //Take a game object same as prefab.
+   var go = pool.Take();
+   
+   //Take a game object, set position and rotation use world space.
+   var go_1 = pool.Take(position, rotation);
+   
+   //Take a game object, set parent, position and rotation use local space.
+   var go_2 = pool.Take(parent, position, rotation);
+   
+   //Recycle the game object to pool if we do not need it.
+   pool.Recycle(go);
+   ```
 
 ## Demo
-- Demos in the path "MGS-ObjectPool/Scenes" provide reference to you.
+- Demos in the path "MGS.Packages/ObjectPool/Demo/" provide reference to you.
 
 ## Preview
-- Bullet Pool
+![Bullet Pool](./Attachment/images/BulletPool.gif)
 
-![Bullet Pool](./Attachment/README_Image/BulletPool.gif)
+------
 
-## Contact
-- If you have any questions, feel free to contact me at mogoson@outlook.com.
+Copyright © 2021 Mogoson.	mogoson@outlook.com

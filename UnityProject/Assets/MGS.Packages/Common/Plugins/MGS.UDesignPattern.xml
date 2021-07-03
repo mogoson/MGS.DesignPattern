@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MGS.UDesignPattern</name>
+    </assembly>
+    <members>
+        <member name="T:MGS.DesignPattern.GOPool">
+            <summary>
+            Pool of gameobject.
+            </summary>
+        </member>
+        <member name="P:MGS.DesignPattern.GOPool.Node">
+            <summary>
+            Parent of gameobjects.
+            </summary>
+        </member>
+        <member name="F:MGS.DesignPattern.GOPool.prefab">
+            <summary>
+            Prefab to create clone.
+            </summary>
+        </member>
+        <member name="M:MGS.DesignPattern.GOPool.#ctor(UnityEngine.Transform,UnityEngine.GameObject,System.Int32)">
+            <summary>
+            Create and initialize GameObjectPool.
+            </summary>
+            <param name="node">Parent of gameobjects.</param>
+            <param name="prefab">Prefab to create clone.</param>
+            <param name="maxCount">Max count limit of gameobjects in pool.</param>
+        </member>
+        <member name="M:MGS.DesignPattern.GOPool.Take(UnityEngine.Vector3,UnityEngine.Quaternion)">
+            <summary>
+            Take a gameobject from pool.
+            </summary>
+            <param name="position">Position of new gameobject.</param>
+            <param name="rotation">Rotation of new gameobject.</param>
+            <returns>A gameobject.</returns>
+        </member>
+        <member name="M:MGS.DesignPattern.GOPool.Take(UnityEngine.Transform,UnityEngine.Vector3,UnityEngine.Quaternion)">
+            <summary>
+            Take a gameobject from pool.
+            </summary>
+            <param name="parent">Parent of new gameobject.</param>
+            <param name="localPosition">Local position of new gameobject.</param>
+            <param name="localRotation">Local rotation of new gameobject.</param>
+            <returns>A gameobject.</returns>
+        </member>
+        <member name="M:MGS.DesignPattern.GOPool.Create">
+            <summary>
+            Create new gameobject.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MGS.DesignPattern.GOPool.Reset(UnityEngine.GameObject)">
+            <summary>
+            Reset the gameobject.
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:MGS.DesignPattern.GOPool.Dispose(UnityEngine.GameObject)">
+            <summary>
+            Dispose the gameobject.
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="T:MGS.DesignPattern.GOPoolManager">
+            <summary>
+            Manager of gameobject pool.
+            </summary>
+        </member>
+        <member name="F:MGS.DesignPattern.GOPoolManager.poolsInfo">
+            <summary>
+            Dictionary store pools info(name and pool).
+            </summary>
+        </member>
+        <member name="F:MGS.DesignPattern.GOPoolManager.poolRoot">
+            <summary>
+            Root transform for pools.
+            </summary>
+        </member>
+        <member name="M:MGS.DesignPattern.GOPoolManager.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:MGS.DesignPattern.GOPoolManager.CreatePool(System.String,UnityEngine.GameObject,System.Int32)">
+            <summary>
+            Create a pool in this manager.
+            </summary>
+            <param name="name">Name of GameObjectPool.</param>
+            <param name="prefab">Prefab of GameObjectPool.</param>
+            <param name="maxCount">Max count limit of gameobjects in pool.</param>
+            <returns>Pool created base on parameters.</returns>
+        </member>
+        <member name="M:MGS.DesignPattern.GOPoolManager.FindPool(System.String)">
+            <summary>
+            Find GameObjectPool by name.
+            </summary>
+            <param name="name">Name of GameObjectPool.</param>
+            <returns>Name match GameObjectPool.</returns>
+        </member>
+        <member name="M:MGS.DesignPattern.GOPoolManager.DeletePool(System.String)">
+            <summary>
+            Delete GameObjectPool by name.
+            </summary>
+            <param name="name">Name of GameObjectPool.</param>
+        </member>
+    </members>
+</doc>
