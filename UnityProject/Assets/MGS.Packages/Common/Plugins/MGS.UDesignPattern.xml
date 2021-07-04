@@ -27,22 +27,24 @@
             <param name="prefab">Prefab to create clone.</param>
             <param name="maxCount">Max count limit of gameobjects in pool.</param>
         </member>
-        <member name="M:MGS.DesignPattern.GOPool.Take(UnityEngine.Vector3,UnityEngine.Quaternion)">
+        <member name="M:MGS.DesignPattern.GOPool.Take">
             <summary>
             Take a gameobject from pool.
             </summary>
-            <param name="position">Position of new gameobject.</param>
-            <param name="rotation">Rotation of new gameobject.</param>
             <returns>A gameobject.</returns>
         </member>
-        <member name="M:MGS.DesignPattern.GOPool.Take(UnityEngine.Transform,UnityEngine.Vector3,UnityEngine.Quaternion)">
+        <member name="M:MGS.DesignPattern.GOPool.Take``1">
             <summary>
-            Take a gameobject from pool.
+            Take a gameobject from pool and get the specified component.
             </summary>
-            <param name="parent">Parent of new gameobject.</param>
-            <param name="localPosition">Local position of new gameobject.</param>
-            <param name="localRotation">Local rotation of new gameobject.</param>
-            <returns>A gameobject.</returns>
+            <typeparam name="T">Specified type of component.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:MGS.DesignPattern.GOPool.Recycle(UnityEngine.Component)">
+            <summary>
+            Recycle the game object of component to pool.
+            </summary>
+            <param name="cpnt">Instance of component.</param>
         </member>
         <member name="M:MGS.DesignPattern.GOPool.Create">
             <summary>

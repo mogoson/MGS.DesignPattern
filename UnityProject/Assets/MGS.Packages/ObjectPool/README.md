@@ -36,14 +36,14 @@
    //Take a game object same as prefab.
    var go = pool.Take();
    
-   //Take a game object, set position and rotation use world space.
-   var go_1 = pool.Take(position, rotation);
-   
-   //Take a game object, set parent, position and rotation use local space.
-   var go_2 = pool.Take(parent, position, rotation);
-   
    //Recycle the game object to pool if we do not need it.
    pool.Recycle(go);
+   
+   //Take a game object and get or add component.
+   var cpnt = pool.Take<Bullet>();
+   
+   //Recycle the game object of component to pool if we do not need it.
+   pool.Recycle(cpnt);
    ```
 - Use GenericPool for Custom object.
 

@@ -37,7 +37,9 @@ namespace MGS.ObjectPool
         {
             if (Input.GetMouseButtonDown(0))
             {
-                var bullet = pool.Take(muzzle.position, muzzle.rotation).GetComponent<Bullet>();
+                var bullet = pool.Take<Bullet>();
+                bullet.transform.position = muzzle.position;
+                bullet.transform.rotation = muzzle.rotation;
                 bullet.AddForce(muzzle.forward * fireForce);
             }
         }
