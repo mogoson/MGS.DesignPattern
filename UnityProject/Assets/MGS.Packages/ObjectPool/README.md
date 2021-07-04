@@ -45,6 +45,39 @@
    //Recycle the game object to pool if we do not need it.
    pool.Recycle(go);
    ```
+- Use GenericPool for Custom object.
+
+  ```C#
+  //Implement custom object.
+  public class CustomObject : IResettable
+  {
+      public void Reset()
+      {
+          //Reset the object.
+      }
+  
+      public void Dispose()
+      {
+          //Dispose the object.
+      }
+  }
+  
+  //Use GenericPool in your class.
+  public class TestCase
+  {
+      public TestCase()
+      {
+          //Create pool for CustomObject.
+          var pool = new GenericPool<CustomObject>();
+  
+          //Take a instance of CustomObject from pool.
+          var obj = pool.Take();
+  
+          //Recycle object to pool if we do not need it.
+          pool.Recycle(obj);
+      }
+  }
+  ```
 
 ## Demo
 - Demos in the path "MGS.Packages/ObjectPool/Demo/" provide reference to you.

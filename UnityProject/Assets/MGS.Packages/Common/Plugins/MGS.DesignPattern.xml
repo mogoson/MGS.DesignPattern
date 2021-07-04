@@ -4,6 +4,45 @@
         <name>MGS.DesignPattern</name>
     </assembly>
     <members>
+        <member name="T:MGS.DesignPattern.IResettable">
+            <summary>
+            Interface for resettable object.
+            </summary>
+        </member>
+        <member name="M:MGS.DesignPattern.IResettable.Reset">
+            <summary>
+            Reset object.
+            </summary>
+        </member>
+        <member name="T:MGS.DesignPattern.GenericPool`1">
+            <summary>
+            Generic object pool.
+            </summary>
+        </member>
+        <member name="M:MGS.DesignPattern.GenericPool`1.#ctor(System.Int32)">
+            <summary>
+            Constructor of GenericPool.
+            </summary>
+            <param name="maxCount">Max count limit of objects in pool.</param>
+        </member>
+        <member name="M:MGS.DesignPattern.GenericPool`1.Create">
+            <summary>
+            Create a new object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MGS.DesignPattern.GenericPool`1.Reset(`0)">
+            <summary>
+            Reset this object.
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:MGS.DesignPattern.GenericPool`1.Dispose(`0)">
+            <summary>
+            Dispose this object.
+            </summary>
+            <param name="obj"></param>
+        </member>
         <member name="T:MGS.DesignPattern.ObjectPool`1">
             <summary>
             Generic object pool.
