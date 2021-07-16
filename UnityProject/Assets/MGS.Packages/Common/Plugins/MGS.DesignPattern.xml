@@ -115,7 +115,7 @@
         </member>
         <member name="P:MGS.DesignPattern.SingleTimer`1.Interval">
             <summary>
-            Interval of tick update.
+            Interval of tick update [ms].
             </summary>
         </member>
         <member name="P:MGS.DesignPattern.SingleTimer`1.Enabled">
@@ -148,12 +148,17 @@
             </summary>
             <typeparam name="T">Specified type.</typeparam>
         </member>
+        <member name="P:MGS.DesignPattern.Singleton`1.Instance">
+            <summary>
+            Single instance of the specified type T.
+            </summary>
+        </member>
         <member name="T:MGS.DesignPattern.Singleton`1.Agent">
             <summary>
             Agent provide the single instance.
             </summary>
         </member>
-        <member name="F:MGS.DesignPattern.Singleton`1.Agent.Instance">
+        <member name="F:MGS.DesignPattern.Singleton`1.Agent.instance">
             <summary>
             Single instance of the specified type T created by that type's default constructor.
             </summary>
@@ -161,11 +166,6 @@
         <member name="M:MGS.DesignPattern.Singleton`1.Agent.#cctor">
             <summary>
             Explicit static constructor to tell C# compiler not to mark type as beforefieldinit.
-            </summary>
-        </member>
-        <member name="P:MGS.DesignPattern.Singleton`1.Instance">
-            <summary>
-            Single instance of the specified type T.
             </summary>
         </member>
     </members>

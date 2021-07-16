@@ -16,7 +16,7 @@ using UnityEngine;
 
 namespace MGS.ObjectPool
 {
-    [AddComponentMenu("MGS/ObjectPool/Bullet")]
+    [AddComponentMenu("MGS/Demo/Bullet")]
     [RequireComponent(typeof(Rigidbody))]
     public class Bullet : MonoBehaviour
     {

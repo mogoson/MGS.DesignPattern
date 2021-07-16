@@ -106,5 +106,69 @@
             </summary>
             <param name="name">Name of GameObjectPool.</param>
         </member>
+        <member name="T:MGS.DesignPattern.SingleBehaviour">
+            <summary>
+            Generic single behaviour.
+            Auto create the generic instance, do not add this component to any GameObject by yourself.
+            </summary>
+        </member>
+        <member name="E:MGS.DesignPattern.SingleBehaviour.OnApplicationFocusEvent">
+            <summary>
+            Event on application focus.
+            </summary>
+        </member>
+        <member name="E:MGS.DesignPattern.SingleBehaviour.OnApplicationPauseEvent">
+            <summary>
+            Event on application pause.
+            </summary>
+        </member>
+        <member name="E:MGS.DesignPattern.SingleBehaviour.OnApplicationQuitEvent">
+            <summary>
+            Event on application quit.
+            </summary>
+        </member>
+        <member name="M:MGS.DesignPattern.SingleBehaviour.OnApplicationFocus(System.Boolean)">
+            <summary>
+            On application focus.
+            </summary>
+            <param name="hasFocus"></param>
+        </member>
+        <member name="M:MGS.DesignPattern.SingleBehaviour.OnApplicationPause(System.Boolean)">
+            <summary>
+            On application pause.
+            </summary>
+            <param name="pauseStatus"></param>
+        </member>
+        <member name="M:MGS.DesignPattern.SingleBehaviour.OnApplicationQuit">
+            <summary>
+            On application quit.
+            </summary>
+        </member>
+        <member name="T:MGS.DesignPattern.SingleComponent`1">
+            <summary>
+            Generic base class for single Component.
+            Inheritance class should with the sealed access modifier to ensure distinct singleton.
+            </summary>
+        </member>
+        <member name="P:MGS.DesignPattern.SingleComponent`1.Instance">
+            <summary>
+            Single instance of the specified Component T.
+            </summary>
+        </member>
+        <member name="T:MGS.DesignPattern.SingleComponent`1.Agent">
+            <summary>
+            Agent provide the single instance.
+            </summary>
+        </member>
+        <member name="F:MGS.DesignPattern.SingleComponent`1.Agent.instance">
+            <summary>
+            Single instance of the specified Component T.
+            </summary>
+        </member>
+        <member name="M:MGS.DesignPattern.SingleComponent`1.Agent.#cctor">
+            <summary>
+            Explicit static constructor to tell C# compiler not to mark type as beforefieldinit.
+            </summary>
+        </member>
     </members>
 </doc>

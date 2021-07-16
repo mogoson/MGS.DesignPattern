@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace MGS.ObjectPool
 {
-    [AddComponentMenu("MGS/ObjectPool/Gun")]
+    [AddComponentMenu("MGS/Demo/Gun")]
     public class Gun : MonoBehaviour
     {
         #region Field and Property

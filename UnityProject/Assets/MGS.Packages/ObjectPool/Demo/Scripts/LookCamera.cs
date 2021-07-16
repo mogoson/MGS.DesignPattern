@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace MGS.ObjectPool
 {
-    [AddComponentMenu("MGS/ObjectPool/LookCamera")]
+    [AddComponentMenu("MGS/Demo/LookCamera")]
     public class LookCamera : MonoBehaviour
     {
         #region Field and Property

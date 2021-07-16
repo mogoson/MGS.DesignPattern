@@ -1,3 +1,5 @@
+[TOC]
+
 # MGS.ObjectPool
 
 ## Summary
@@ -53,12 +55,12 @@
   {
       public void Reset()
       {
-          //Reset the object.
+          //TODO: Reset the object.
       }
   
       public void Dispose()
       {
-          //Dispose the object.
+          //TODO: Dispose the object.
       }
   }
   
