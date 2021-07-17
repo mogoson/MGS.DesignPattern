@@ -14,9 +14,8 @@ using MGS.DesignPattern;
 using System.Collections;
 using UnityEngine;
 
-namespace MGS.ObjectPool
+namespace MGS.ObjectPool.Demo
 {
-    [AddComponentMenu("MGS/Demo/Bullet")]
     [RequireComponent(typeof(Rigidbody))]
     public class Bullet : MonoBehaviour
     {

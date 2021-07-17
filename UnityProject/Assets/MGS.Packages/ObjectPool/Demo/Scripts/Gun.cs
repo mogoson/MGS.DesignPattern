@@ -13,9 +13,8 @@
 using MGS.DesignPattern;
 using UnityEngine;
 
-namespace MGS.ObjectPool
+namespace MGS.ObjectPool.Demo
 {
-    [AddComponentMenu("MGS/Demo/Gun")]
     public class Gun : MonoBehaviour
     {
         #region Field and Property
