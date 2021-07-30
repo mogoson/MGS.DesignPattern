@@ -15,7 +15,6 @@
 
 - System.dll
 - UnityEngine.dll
-- MGS.Logger.dll
 - MGS.DesignPattern.dll
 
 ## Demand
