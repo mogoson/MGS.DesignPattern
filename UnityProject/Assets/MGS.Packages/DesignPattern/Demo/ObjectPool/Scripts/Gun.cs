@@ -10,10 +10,9 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.DesignPattern;
 using UnityEngine;
 
-namespace MGS.ObjectPool.Demo
+namespace MGS.DesignPattern.Demo
 {
     public class Gun : MonoBehaviour
     {

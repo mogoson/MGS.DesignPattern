@@ -10,11 +10,10 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.DesignPattern;
 using System.Collections;
 using UnityEngine;
 
-namespace MGS.ObjectPool.Demo
+namespace MGS.DesignPattern.Demo
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Bullet : MonoBehaviour
