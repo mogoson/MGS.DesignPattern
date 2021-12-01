@@ -16,37 +16,12 @@
 ## Demand
 - Provide a single instance of the specified type T.
 - Generic object pool.
-- Provide a single instance of the specified MonoBehaviour.
-- Generic game object pool.
-
-## Implemented
-
-### ObjectPool
-
-```C#
-public abstract class ObjectPool<T>{}
-public class GenericPool<T> : ObjectPool<T> where T : IResettable, new(){}
-
-public class GOPool : ObjectPool<GameObject>{}
-public sealed class GOPoolManager : Singleton<GOPoolManager>{}
-```
-
-### Singleton
-
-```C#
-public abstract class Singleton<T> where T : class{}
-public abstract class SingleUpdater<T> : Singleton<T> where T : class{}
-
-[DisallowMultipleComponent]
-public abstract class SingleComponent<T> : MonoBehaviour where T : Component{}
-public sealed class SingleBehaviour : SingleComponent<SingleBehaviour>{}
-```
 
 ## Usage
 
 ### Object Pool
 
-- Generic Pool
+- ObjectPoolPro
 
 ```C#
 //Implement custom object.
@@ -63,13 +38,13 @@ public class CustomObject : IResettable
     }
 }
 
-//Use GenericPool in your class.
+//Use ObjectPoolPro in your class.
 public class TestCase
 {
     public TestCase()
     {
         //Create pool for CustomObject.
-        var pool = new GenericPool<CustomObject>();
+        var pool = new ObjectPoolPro<CustomObject>();
 
         //Take a instance of CustomObject from pool.
         var obj = pool.Take();
@@ -80,20 +55,20 @@ public class TestCase
 }
 ```
 
-- GO Pool
+- GameObjectPool
 
   - Create game object pool.
 
   ```C#
   //The prefab as template of reusable game object.
-  var pool = GOPoolManager.Instance.CreatePool(poolName, prefab);
+  var pool = GameObjectPoolManager.Instance.CreatePool(poolName, prefab);
   ```
 
   - Use pool to Take, Recycle game object.
 
   ```C#
   //Use pool name to find the instance of pool from manager if we do not hold it.
-  var pool = GOPoolManager.Instance.FindPool(poolName);
+  var pool = GameObjectPoolManager.Instance.FindPool(poolName);
   
   //Take a game object same as prefab.
   var go = pool.Take();
@@ -126,15 +101,15 @@ public sealed class TestSingleton : Singleton<TestSingleton>
 var testInfo = TestSingleton.Instance.testField;
 
 
-//Custom classs with a single instance to update.
-public sealed class TestSingleUpdater : SingleUpdater<TestSingleUpdater>
+//Custom classs with a single instance and thread cruise.
+public sealed class TestSingleCruiser : SingleCruiser<TestSingleCruiser>
 {
     //Private parameterless constructor to ensure singleton.
     private TestSingleUpdater() { }
-
-    protected override void Update()
+    
+    protected override void Cruise()
     {
-        //TODO: do something on update.
+        //TODO: do something.
     }
 }
 ```
@@ -142,15 +117,11 @@ public sealed class TestSingleUpdater : SingleUpdater<TestSingleUpdater>
 - Single Component
 
 ```C#
-//Derived custom single component.
-//Inheritance class should with the sealed access modifier to ensure distinct singleton.
+//Provide a auto create, lazy and thread safety single instance of component T;
+//Specified component T should with the sealed access modifier to ensure singleton.
+//Do not add the component T to any gameobject by yourself.
 public sealed class UIManager : SingleComponent<UIManager>
 {
-    private void Start()
-    {
-        //TODO:
-    }
-
     public RectTransfrom FindUI(string name)
     {
         //TODO:
@@ -158,14 +129,14 @@ public sealed class UIManager : SingleComponent<UIManager>
 }
 
 //Use Instance to accessing fields, properties and methods. 
-var ui = UIManager.Instance.FindUI("UI_Help");
+var helpUI = UIManager.Instance.FindUI("UI_Help");
 ```
 
 - Single Behaviour
 
 ```C#
 //Use the properties and methods inherit from MonoBehaviour.
-SingleBehaviour.Instance.StartCoroutine(routine);
+SingleBehaviour.Instance.StartCoroutine(coroutine);
 
 //Use the extended events.
 SingleBehaviour.Instance.OnApplicationQuitEvent += () =>

@@ -1,12 +1,12 @@
 ﻿/*************************************************************************
- *  Copyright © 2018 Mogoson. All rights reserved.
+ *  Copyright © 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  Bullet.cs
  *  Description  :  Define bullet for demo.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  2/9/2018
+ *  Date         :  2/9/2021
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -22,14 +22,14 @@ namespace MGS.DesignPattern.Demo
         public float destroyDelay = 3;
 
         private new Rigidbody rigidbody;
-        private GOPool pool;
+        private GameObjectPool bulletPool;
         #endregion
 
         #region Private Method
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody>();
-            pool = GOPoolManager.Instance.FindPool(Gun.BULLET_POOL);
+            bulletPool = GameObjectPoolManager.Instance.FindPool(Gun.POOL_NAME_BULLET);
         }
 
         private void OnEnable()
@@ -39,7 +39,7 @@ namespace MGS.DesignPattern.Demo
 
         private void OnCollisionEnter(Collision collision)
         {
-            pool.Recycle(gameObject);
+            bulletPool.Recycle(gameObject);
         }
 
         private void OnDisable()
@@ -51,7 +51,7 @@ namespace MGS.DesignPattern.Demo
         private IEnumerator DelayDestroy()
         {
             yield return new WaitForSeconds(destroyDelay);
-            pool.Recycle(gameObject);
+            bulletPool.Recycle(gameObject);
         }
         #endregion
 

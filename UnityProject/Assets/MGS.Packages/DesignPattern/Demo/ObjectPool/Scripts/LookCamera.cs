@@ -1,12 +1,12 @@
 /*************************************************************************
- *  Copyright © 2018 Mogoson. All rights reserved.
+ *  Copyright © 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  LookCamera.cs
  *  Description  :  Simple look camera for demo.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  2/21/2018
+ *  Date         :  2/21/2021
  *  Description  :  Initial development version.
  *************************************************************************/
 
