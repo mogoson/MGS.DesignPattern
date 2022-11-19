@@ -148,12 +148,6 @@ SingleBehaviour.Instance.OnApplicationQuitEvent += () =>
 ## Demo
 - Demos in the path "MGS.Packages/DesignPattern/Demo/" provide reference to you.
 
-## Preview
-
-- Object Pool
-
-![Bullet Pool](./Attachment/images/BulletPool.gif)
-
 ------
 
 Copyright © 2021 Mogoson.	mogoson@outlook.com
